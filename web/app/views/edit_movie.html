@@ -1,0 +1,27 @@
+<h2>Muokkaa elokuvan tietoja</h2>
+
+<form name="infoForm">
+    <p>
+        <label>Nimi: </label>
+        <input type="text" name="name" ng-model="movie.name" required/>
+        <div ng-show="infoForm.name.$invalid && infoForm.name.$dirty">
+          Elokuvan nimi ei saa olla tyhjä!
+        </div>
+    </p>
+    <p>
+        <label>Ohjaaja: </label>
+        <input type="text" name="director" ng-model="movie.director" required/>
+        <div ng-show="infoForm.director.$invalid && infoForm.director.$dirty">
+          Ohjaajan nimi ei saa olla tyhjä!
+        </div>
+    </p>
+    <p>
+        <label>Julkaisuvuosi: </label>
+        <input type="number" name="release" ng-model="movie.release" required min="1900" max="2017"/>
+        <div ng-show="infoForm.release.$invalid && infoForm.release.$dirty">
+          Julkaisuvuosi ei ole validi!
+        </div>
+    </p>
+
+    <button ng-disabled="infoForm.$invalid" ng-click="editMovie(movie)">Muokkaa</button>
+</form>

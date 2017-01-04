@@ -1,0 +1,17 @@
+<h2>Elokuvat</h2>
+
+<table>
+    <tr>
+        <th>Nimi</th>
+        <th>Ohjaaja</th>
+        <th>Julkaisuvuosi</th>
+    </tr>
+    <tr ng-repeat="movie in movies">
+        <td><a ng-href="#!/movies/{{movie.$id}}">{{movie.name}}</a></td>
+        <td>{{movie.director}}</td>
+        <td>{{movie.release}}</td>
+        <td>
+            <button ng-click="removeMovie(movie)">Poista</button>
+        </td>
+    </tr>
+</table>
