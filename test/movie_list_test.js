@@ -1,11 +1,10 @@
-describe('Movie list', function() {
+describe('Movie list', function () {
 
     var controller, scope;
 
     var FirebaseServiceMock;
 
     beforeEach(function() {
-        // Lisää moduulisi nimi tähän
         module('MovieApp');
 
         FirebaseServiceMock = (function () {
@@ -40,7 +39,7 @@ describe('Movie list', function() {
 
                 removeMovie: function (movie) {
                     movies = movies.filter(function (elem) {
-                        return elem.name != movie.name;
+                        return elem.name !== movie.name;
                     });
                 }
             }
@@ -81,5 +80,10 @@ describe('Movie list', function() {
     it('should be able to remove a movie', function(){
         scope.removeMovie(scope.movies[0]);
         expect(FirebaseServiceMock.removeMovie).toHaveBeenCalled();
+
+        var movies = FirebaseServiceMock.getMovies();
+
+        expect(movies.length).toBe(2);
+        expect(movies[0].name).not.toEqual('Titanic');
     });
 });
