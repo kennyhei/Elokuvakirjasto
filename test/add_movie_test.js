@@ -1,88 +1,84 @@
-describe('Add movie', function(){
-	var controller, scope;
+describe('Add movie', function() {
+    var controller, scope;
 
-	var FirebaseServiceMock;
+    var FirebaseServiceMock;
 
-  	beforeEach(function(){
-            // Lisää moduulisi nimi tähän
-            module('MovieApp');
+    beforeEach(function() {
+        module('MovieApp');
 
-            FirebaseServiceMock = (function () {
+        FirebaseServiceMock = (function () {
 
-                var movies = [
-                    {
-                        name: 'Titanic',
-                        director: 'James Cameron',
-                        release: 1997
-                    },
-                    {
-                        name: 'Terminator 2',
-                        director: 'James Cameron',
-                        release: 1991
-                    },
-                    {
-                        name: 'Police Academy',
-                        director: 'Hugh Wilson',
-                        release: 1984
-                    }
-                ];
-
-                return {
-                    // Toteuta FirebaseServicen mockatut metodit tähän
-                    getMovies: function () {
-                        return movies;
-                    },
-
-                    addMovie: function (movie) {
-                        movies.push(movie);
-                    }
+            var movies = [
+                {
+                    name: 'Titanic',
+                    director: 'James Cameron',
+                    release: 1997
+                },
+                {
+                    name: 'Terminator 2',
+                    director: 'James Cameron',
+                    release: 1991
+                },
+                {
+                    name: 'Police Academy',
+                    director: 'Hugh Wilson',
+                    release: 1984
                 }
-            })();
+            ];
 
-            // Lisää vakoilijat
-	    spyOn(FirebaseServiceMock, 'getMovies').and.callThrough();
-	    spyOn(FirebaseServiceMock, 'addMovie').and.callThrough();
+            return {
+                // Toteuta FirebaseServicen mockatut metodit tähän
+                getMovies: function () {
+                    return movies;
+                },
 
-            // Injektoi toteuttamasi kontrolleri tähän
-	    inject(function($controller, $rootScope) {
-                scope = $rootScope.$new();
-                // Muista vaihtaa oikea kontrollerin nimi!
-                controller = $controller('AddMovieController', {
-                    $scope: scope,
-                    FirebaseService: FirebaseServiceMock
-	      });
-	    });
-  	});
+                addMovie: function (movie) {
+                    movies.push(movie);
+                }
+            }
+        })();
 
-  	/*
-  	* Testaa alla esitettyjä toimintoja kontrollerissasi
-  	*/
+        spyOn(FirebaseServiceMock, 'getMovies').and.callThrough();
+        spyOn(FirebaseServiceMock, 'addMovie').and.callThrough();
 
-  	/*
-  	* Testaa, että käyttäjä pystyy lisäämään elokuvan oikeilla tiedoilla.
-  	* Muista myös tarkistaa, että Firebasen kanssa keskustelevasta palvelusta
-  	* on kutsutta oikeaa funktiota lisäämällä siihen vakoilijan ja käyttämällä
-  	* toBeCalled-oletusta.
-	*/
-	it('should be able to add a movie by its name, director, release date and description', function() {
+        inject(function($controller, $rootScope) {
+            scope = $rootScope.$new();
+            controller = $controller('AddMovieController', {
+                $scope: scope,
+                FirebaseService: FirebaseServiceMock
+          });
+        });
+    });
 
-            scope.name = 'Häjyt';
-            scope.director = 'Aleksi Mäkelä';
-            scope.release = 1999;
+    /*
+    * Testaa alla esitettyjä toimintoja kontrollerissasi
+    */
 
-            scope.addMovie();
+    /*
+    * Testaa, että käyttäjä pystyy lisäämään elokuvan oikeilla tiedoilla.
+    * Muista myös tarkistaa, että Firebasen kanssa keskustelevasta palvelusta
+    * on kutsutta oikeaa funktiota lisäämällä siihen vakoilijan ja käyttämällä
+    * toBeCalled-oletusta.
+    */
+    it('should be able to add a movie by its name, director, release date and description', function() {
 
-            expect(FirebaseServiceMock.addMovie).toHaveBeenCalled();
-	});
+        scope.name = 'Häjyt';
+        scope.director = 'Aleksi Mäkelä';
+        scope.release = 1999;
 
-	/*
-	* Testaa, ettei käyttäjä pysty lisäämään elokuvaa väärillä tiedoilla.
-	* Muista myös tarkistaa, että Firebasen kanssa keskustelevasta palvelusta
-	* EI kutsuta funktiota, joka hoitaa muokkauksen. Voit käyttää siihen
-	* not.toBeCalled-oletusta (muista not-negaatio!).
-	*/
-	it('should not be able to add a movie if its name, director, release date or description is empty', function(){
-            // TODO
-            expect(true).toBe(true);
-	});
+        scope.addMovie();
+
+        expect(FirebaseServiceMock.addMovie).toHaveBeenCalled();
+    });
+
+    /*
+    * Testaa, ettei käyttäjä pysty lisäämään elokuvaa väärillä tiedoilla.
+    * Muista myös tarkistaa, että Firebasen kanssa keskustelevasta palvelusta
+    * EI kutsuta funktiota, joka hoitaa muokkauksen. Voit käyttää siihen
+    * not.toBeCalled-oletusta (muista not-negaatio!).
+    */
+    it('should not be able to add a movie if its name, director, release date or description is empty', function(){
+        // TODO
+        expect(true).toBe(true);
+    });
 });

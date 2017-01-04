@@ -1,87 +1,85 @@
-describe('Movie list', function(){
-	var controller, scope;
+describe('Movie list', function() {
 
-	var FirebaseServiceMock;
+    var controller, scope;
 
-  	beforeEach(function() {
-            // Lisää moduulisi nimi tähän
-            module('MovieApp');
+    var FirebaseServiceMock;
 
-            FirebaseServiceMock = (function () {
+    beforeEach(function() {
+        // Lisää moduulisi nimi tähän
+        module('MovieApp');
 
-                var movies = [
-                    {
-                        name: 'Titanic',
-                        director: 'James Cameron',
-                        release: 1997
-                    },
-                    {
-                        name: 'Terminator 2',
-                        director: 'James Cameron',
-                        release: 1991
-                    },
-                    {
-                        name: 'Police Academy',
-                        director: 'Hugh Wilson',
-                        release: 1984
-                    }
-                ];
+        FirebaseServiceMock = (function () {
 
-                return {
-                    // Toteuta FirebaseServicen mockatut metodit tähän
-                    getMovies: function () {
-                        return movies;
-                    },
-
-                    addMovie: function (movie) {
-                        movies.push(movie);
-                    },
-
-                    removeMovie: function (movie) {
-                        movies = movies.filter(function (elem) {
-                            return elem.name != movie.name;
-                        });
-                    }
+            var movies = [
+                {
+                    name: 'Titanic',
+                    director: 'James Cameron',
+                    release: 1997
+                },
+                {
+                    name: 'Terminator 2',
+                    director: 'James Cameron',
+                    release: 1991
+                },
+                {
+                    name: 'Police Academy',
+                    director: 'Hugh Wilson',
+                    release: 1984
                 }
-            })();
+            ];
 
-            // Lisää vakoilijat
-	    spyOn(FirebaseServiceMock, 'getMovies').and.callThrough();
-	    spyOn(FirebaseServiceMock, 'addMovie').and.callThrough();
-            spyOn(FirebaseServiceMock, 'removeMovie').and.callThrough();
+            return {
+                // Toteuta FirebaseServicen mockatut metodit tähän
+                getMovies: function () {
+                    return movies;
+                },
 
-            // Injektoi toteuttamasi kontrolleri tähän
-            inject(function($controller, $rootScope) {
+                addMovie: function (movie) {
+                    movies.push(movie);
+                },
 
-                scope = $rootScope.$new();
-	        controller = $controller('ListMoviesController', {
-                    $scope: scope,
-                    FirebaseService: FirebaseServiceMock
-	      });
-	    });
-  	});
+                removeMovie: function (movie) {
+                    movies = movies.filter(function (elem) {
+                        return elem.name != movie.name;
+                    });
+                }
+            }
+        })();
 
-  	/*
-  	* Testaa alla esitettyjä toimintoja kontrollerissasi
-  	*/
+        spyOn(FirebaseServiceMock, 'getMovies').and.callThrough();
+        spyOn(FirebaseServiceMock, 'addMovie').and.callThrough();
+        spyOn(FirebaseServiceMock, 'removeMovie').and.callThrough();
 
-  	/*
-  	* Testaa, että Firebasesta (mockilta) saadut elokuvat löytyvät konrollerista
-  	* Testaa myös, että Firebasea käyttävästä palvelusta kutsutaan oikeaa funktiota,
-  	* käyttämällä toBeCalled-oletusta.
-  	*/
-        it('should list all movies from the Firebase', function() {
-            expect(scope.movies.length).toBe(3);
-            expect(FirebaseServiceMock.getMovies).toHaveBeenCalled();
+        inject(function($controller, $rootScope) {
+            scope = $rootScope.$new();
+            controller = $controller('ListMoviesController', {
+                $scope: scope,
+                FirebaseService: FirebaseServiceMock
+          });
         });
+    });
 
-	/*
-	* Testaa, että elokuvan pystyy poistamaan Firebasesta.
-	* Testaa myös, että Firebasea käyttävästä palvelusta kutsutaan oikeaa funktiota,
-  	* käyttämällä toBeCalled-oletusta.
-	*/
-        it('should be able to remove a movie', function(){
-            scope.removeMovie(scope.movies[0]);
-            expect(FirebaseServiceMock.removeMovie).toHaveBeenCalled();
-        });
+    /*
+    * Testaa alla esitettyjä toimintoja kontrollerissasi
+    */
+
+    /*
+    * Testaa, että Firebasesta (mockilta) saadut elokuvat löytyvät konrollerista
+    * Testaa myös, että Firebasea käyttävästä palvelusta kutsutaan oikeaa funktiota,
+    * käyttämällä toBeCalled-oletusta.
+    */
+    it('should list all movies from the Firebase', function() {
+        expect(scope.movies.length).toBe(3);
+        expect(FirebaseServiceMock.getMovies).toHaveBeenCalled();
+    });
+
+    /*
+    * Testaa, että elokuvan pystyy poistamaan Firebasesta.
+    * Testaa myös, että Firebasea käyttävästä palvelusta kutsutaan oikeaa funktiota,
+    * käyttämällä toBeCalled-oletusta.
+    */
+    it('should be able to remove a movie', function(){
+        scope.removeMovie(scope.movies[0]);
+        expect(FirebaseServiceMock.removeMovie).toHaveBeenCalled();
+    });
 });

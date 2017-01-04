@@ -28,4 +28,3 @@ MovieApp.service('FirebaseService', function($firebaseArray) {
         movies.$save(movie);
     }
 });
-

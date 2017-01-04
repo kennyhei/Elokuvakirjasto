@@ -6,4 +6,3 @@ MovieApp.controller('ShowMovieController', function($scope, $routeParams, Fireba
         $scope.movie = movie;
     });
 });
-
