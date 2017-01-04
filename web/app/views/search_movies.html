@@ -1,0 +1,27 @@
+<h2>Find movies</h2>
+
+<form>
+    <label>Title:</label>
+    <input type="text" ng-model="title"/>
+
+    <label>Year:</label>
+    <input type="number" ng-model="year"/>
+
+    <button ng-click="findMovies()">Search</button>
+</form>
+
+<div ng-show="movies && searched">
+    <h3>Found {{movies.length}}
+        <span ng-pluralize count="movies.length" when="{'0': 'movies.', 'one': 'movie.', 'other': 'movies.'}"></span>
+    </h3>
+
+    <ul>
+        <li ng-repeat="movie in movies">
+            <a ng-href="http://imdb.com/title/{{movie.imdbID}}">{{movie.Title}}</a> ({{movie.Year}})
+        </li>
+    </ul>
+</div>
+
+<div ng-show="!movies && searched">
+    <h3>No movies found.</h3>
+</div>
