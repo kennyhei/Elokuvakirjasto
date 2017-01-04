@@ -1,27 +1,6 @@
-<h2>Lisää elokuva</h2>
+<h2>Add movie</h2>
 
 <form name="infoForm">
-    <p>
-        <label>Nimi: </label>
-        <input type="text" name="name" ng-model="name" required/>
-        <div ng-show="infoForm.name.$invalid && infoForm.name.$dirty">
-          Elokuvan nimi ei saa olla tyhjä!
-        </div>
-    </p>
-    <p>
-        <label>Ohjaaja: </label>
-        <input type="text" name="director" ng-model="director" required/>
-        <div ng-show="infoForm.director.$invalid && infoForm.director.$dirty">
-          Ohjaajan nimi ei saa olla tyhjä!
-        </div>
-    </p>
-    <p>
-        <label>Julkaisuvuosi: </label>
-        <input type="number" name="release" ng-model="release" required min="1900" max="2017"/>
-        <div ng-show="infoForm.release.$invalid && infoForm.release.$dirty">
-          Julkaisuvuosi ei ole validi!
-        </div>
-    </p>
-
-    <button ng-disabled="infoForm.$invalid" ng-click="addMovie()">Lisää</button>
+    <section ng-include='partial.url'></section>
+    <button ng-disabled="infoForm.$invalid" ng-click="addMovie()">Add</button>
 </form>

@@ -1,17 +1,17 @@
-<h2>Elokuvat</h2>
+<h2>Movies</h2>
 
 <table>
     <tr>
-        <th>Nimi</th>
-        <th>Ohjaaja</th>
-        <th>Julkaisuvuosi</th>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Release</th>
     </tr>
     <tr ng-repeat="movie in movies">
         <td><a ng-href="#!/movies/{{movie.$id}}">{{movie.name}}</a></td>
         <td>{{movie.director}}</td>
         <td>{{movie.release}}</td>
         <td>
-            <button ng-click="removeMovie(movie)">Poista</button>
+            <button ng-click="removeMovie(movie)">Remove</button>
         </td>
     </tr>
 </table>

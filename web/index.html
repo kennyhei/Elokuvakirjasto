@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Elokuvakirjasto</title>
+    <title>Movie library</title>
   </head>
   <body ng-app="MovieApp">
-    <h1>Elokuvakirjasto</h1>
+    <h1>Movie library</h1>
 
     <header>
         <nav>
-            <a href="#!/movies">Etusivu</a> | <a href="#!/movies/new">Lisää elokuva</a>
+            <a href="#!/movies">Home</a> | <a href="#!/movies/new">Add movie</a>
         </nav>
     </header>
 
@@ -24,6 +24,7 @@
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
 
     <!-- Linkitä omat tiedostosi tähän (huomaa, että polun juuri on web-kansio!) -->
+    <!-- TODO: Concat & minify -->
     <script src="app/app.js"></script>
     <script src="app/controllers/list_movies_controller.js"></script>
     <script src="app/controllers/add_movie_controller.js"></script>

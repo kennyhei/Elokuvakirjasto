@@ -1,0 +1,21 @@
+<p>
+    <label>Title: </label>
+    <input type="text" name="name" ng-model="$parent.name" required/>
+    <div ng-show="infoForm.name.$invalid && infoForm.name.$dirty">
+      Title can't be empty!
+    </div>
+</p>
+<p>
+    <label>Director: </label>
+    <input type="text" name="director" ng-model="$parent.director" required/>
+    <div ng-show="infoForm.director.$invalid && infoForm.director.$dirty">
+      Director must have a name!
+    </div>
+</p>
+<p>
+    <label>Release: </label>
+    <input type="number" name="release" ng-model="$parent.release" required min="1900" max="2017"/>
+    <div ng-show="infoForm.release.$invalid && infoForm.release.$dirty">
+      Release year not valid!
+    </div>
+</p>
