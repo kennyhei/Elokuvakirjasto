@@ -1,4 +1,9 @@
-MovieApp.controller('AddMovieController', function($scope, $location, FirebaseService) {
+MovieApp.controller('AddMovieController', function($scope, $location, currentAuth, FirebaseService) {
+
+    // User not authenticated
+    if (!currentAuth) {
+        $location.path('/login');
+    }
 
     $scope.partial = {
         url: 'app/views/partials/movie_form.html'

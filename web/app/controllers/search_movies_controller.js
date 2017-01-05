@@ -1,4 +1,4 @@
-MovieApp.controller('SearchMoviesController', function($scope, OMDbService) {
+MovieApp.controller('SearchMoviesController', function($scope, $location, currentAuth, OMDbService) {
 
     $scope.searched = false;
 

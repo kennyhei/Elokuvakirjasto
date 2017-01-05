@@ -1,4 +1,13 @@
-MovieApp.controller('ShowMovieController', function($scope, $routeParams, FirebaseService) {
+MovieApp.controller('ShowMovieController', function($scope,
+                                                    $location,
+                                                    $routeParams,
+                                                    currentAuth,
+                                                    FirebaseService) {
+
+    // User not authenticated
+    if (!currentAuth) {
+        $location.path('/login');
+    }
 
     var key = $routeParams.key;
 

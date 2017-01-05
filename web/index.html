@@ -11,9 +11,15 @@
 
     <header>
         <nav>
+            <button ng-click="logout()" ng-show="userLoggedIn()">Logout</button>
+        </nav>
+        <br/>
+
+        <nav>
             <a href="#!/movies">Home</a> |
-            <a href="#!/movies/new">Add movie</a> |
+            <span ng-show="userLoggedIn()"><a href="#!/movies/new">Add movie</a> |</span>
             <a href="#!/movies/search">Find movies</a>
+
         </nav>
     </header>
 
@@ -33,7 +39,9 @@
     <script src="app/controllers/show_movie_controller.js"></script>
     <script src="app/controllers/edit_movie_controller.js"></script>
     <script src="app/controllers/search_movies_controller.js"></script>
+    <script src="app/controllers/user_controller.js"></script>
     <script src="app/services/firebase_service.js"></script>
     <script src="app/services/omdb_service.js"></script>
+    <script src="app/services/auth_service.js"></script>
   </body>
 </html>

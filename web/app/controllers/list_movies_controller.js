@@ -1,4 +1,4 @@
-MovieApp.controller('ListMoviesController', function($scope, FirebaseService) {
+MovieApp.controller('ListMoviesController', function($scope, $location, currentAuth, FirebaseService) {
 
     $scope.movies = FirebaseService.getMovies();
 

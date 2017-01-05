@@ -1,0 +1,29 @@
+<div>
+    <h2>Login</h2>
+
+    <form>
+        <label>Email:</label>
+        <input type="email" ng-model="email"/>
+
+        <label>Password:</label>
+        <input type="password" ng-model="password"/>
+
+        <button ng-click="login()">Login</button>
+    </form>
+
+    <p ng-show="message">{{message}}</p>
+</div>
+
+<div>
+    <h2>Register</h2>
+
+    <form>
+        <label>Email:</label>
+        <input type="email" ng-model="email"/>
+
+        <label>Password:</label>
+        <input type="password" ng-model="password"/>
+
+        <button ng-click="register()">Register</button>
+    </form>
+</div>

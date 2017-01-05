@@ -10,7 +10,7 @@
         <td><a ng-href="#!/movies/{{movie.$id}}">{{movie.name}}</a></td>
         <td>{{movie.director}}</td>
         <td>{{movie.release}}</td>
-        <td>
+        <td ng-show="userLoggedIn()">
             <button ng-click="removeMovie(movie)">Remove</button>
         </td>
     </tr>
