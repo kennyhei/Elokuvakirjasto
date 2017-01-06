@@ -14,12 +14,14 @@ MovieApp.controller('AddMovieController', function($scope, $location, currentAut
         FirebaseService.addMovie({
             name: $scope.name,
             director: $scope.director,
-            release: $scope.release
+            release: $scope.release,
+            description: $scope.description
         });
 
         $scope.name = '';
         $scope.director = '';
         $scope.release = '';
+        $scope.description = '';
 
         // Redirect to listing page
         $location.path('/movies');

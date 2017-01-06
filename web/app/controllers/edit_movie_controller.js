@@ -20,6 +20,7 @@ MovieApp.controller('EditMovieController', function($scope,
         $scope.name = movie.name;
         $scope.director = movie.director;
         $scope.release = movie.release;
+        $scope.description = movie.description;
     });
 
     $scope.editMovie = function (movie) {
@@ -27,6 +28,7 @@ MovieApp.controller('EditMovieController', function($scope,
         movie.name = $scope.name;
         movie.director = $scope.director;
         movie.release = $scope.release;
+        movie.description = $scope.description;
 
         FirebaseService.editMovie(movie);
         $location.path('/movies/' + $routeParams.key);

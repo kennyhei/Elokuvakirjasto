@@ -1,7 +1,7 @@
 <div class="form-group">
     <div class="row">
         <div class="col-xs-4">
-            <label>Title: </label>
+            <label>Title</label>
             <input type="text" class="form-control" name="name" ng-model="$parent.name" required/>
             <div ng-show="infoForm.name.$invalid && infoForm.name.$dirty">
               Title can't be empty!
@@ -12,7 +12,7 @@
 <div class="form-group">
     <div class="row">
         <div class="col-xs-4">
-            <label>Director: </label>
+            <label>Director</label>
             <input type="text" class="form-control" name="director" ng-model="$parent.director" required/>
             <div ng-show="infoForm.director.$invalid && infoForm.director.$dirty">
               Director must have a name!
@@ -23,10 +23,21 @@
 <div class="form-group">
     <div class="row">
         <div class="col-xs-4">
-            <label>Release: </label>
+            <label>Release</label>
             <input type="number" class="form-control" name="release" ng-model="$parent.release" required min="1900" max="2017"/>
             <div ng-show="infoForm.release.$invalid && infoForm.release.$dirty">
               Release year not valid!
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-xs-4">
+            <label>Description</label>
+            <textarea class="form-control" rows="5" name="description" ng-model="$parent.description" required></textarea>
+            <div ng-show="infoForm.description.$invalid && infoForm.description.$dirty">
+              Description not valid!
             </div>
         </div>
     </div>
