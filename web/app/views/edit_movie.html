@@ -1,6 +1,6 @@
-<h2>Edit movie information</h2>
+<h2>Edit movie "{{movie.name}}"</h2>
 
 <form name="infoForm">
     <section ng-include='partial.url'></section>
-    <button ng-disabled="infoForm.$invalid" ng-click="editMovie(movie)">Edit</button>
+    <button type="button" ng-disabled="infoForm.$invalid" ng-click="editMovie(movie)" class="btn btn-primary">Edit</button>
 </form>

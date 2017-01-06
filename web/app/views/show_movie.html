@@ -1,9 +1,10 @@
-<h2>{{movie.name}} ({{movie.release}})</h2>
+<h2>{{movie.name}}</h2>
 
 <article>
-    <h3>Director</h3>
-
-    <p>{{movie.director}}</p>
+    <ul>
+        <li>Director: {{movie.director}}</li>
+        <li>Release: {{movie.release}}</li>
+    </ul>
 
     <p><a ng-href="#!/movies/{{movie.$id}}/edit">Edit</a></p>
 </article>

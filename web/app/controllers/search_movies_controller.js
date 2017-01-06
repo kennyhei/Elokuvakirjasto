@@ -8,9 +8,15 @@ MovieApp.controller('SearchMoviesController', function($scope, $location, curren
             year  = $scope.year;
 
         OMDbService.findMovies(title, year).then(function (results) {
-            $scope.movies = results.data.Search.filter(function (movie) {
-                return movie.Type === 'movie';
-            });
+
+            if (!results.data.Search) {
+                $scope.movies = null;
+            } else {
+                $scope.movies = results.data.Search.filter(function (movie) {
+                    return movie.Type === 'movie';
+                });
+            }
+
             $scope.searched = true;
         });
     }

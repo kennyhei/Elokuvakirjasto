@@ -1,17 +1,22 @@
 <h2>Movies</h2>
 
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Director</th>
-        <th>Release</th>
-    </tr>
-    <tr ng-repeat="movie in movies">
-        <td><a ng-href="#!/movies/{{movie.$id}}">{{movie.name}}</a></td>
-        <td>{{movie.director}}</td>
-        <td>{{movie.release}}</td>
-        <td ng-show="userLoggedIn()">
-            <button ng-click="removeMovie(movie)">Remove</button>
-        </td>
-    </tr>
+<table ng-if="movies.length > 0" class="table table-hover table-responsive table-condensed">
+    <tbody>
+        <tr class="tr-no-border">
+            <th>Title</th>
+            <th>Director</th>
+            <th>Release</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="movie in movies">
+            <td><a ng-href="#!/movies/{{movie.$id}}">{{movie.name}}</a></td>
+            <td>{{movie.director}}</td>
+            <td>{{movie.release}}</td>
+            <td ng-show="userLoggedIn()">
+                <button type="button" ng-click="removeMovie(movie)" class="btn btn-danger">Remove</button>
+            </td>
+        </tr>
+    </tbody>
 </table>
+
+<h4 ng-if="movies.length === 0">No movies.</h4>

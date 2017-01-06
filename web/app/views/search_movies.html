@@ -1,13 +1,25 @@
 <h2>Find movies</h2>
 
 <form>
-    <label>Title:</label>
-    <input type="text" ng-model="title"/>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-5">
+                <label>Title:</label>
+                <input type="text" class="form-control" ng-model="title"/>
+            </div>
+        </div>
+    </div>
 
-    <label>Year:</label>
-    <input type="number" ng-model="year"/>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-5">
+                <label>Year:</label>
+                <input type="number" class="form-control" ng-model="year"/>
+            </div>
+        </div>
+    </div>
 
-    <button ng-click="findMovies()">Search</button>
+    <button type="button" class="btn btn-primary" ng-click="findMovies()">Search</button>
 </form>
 
 <div ng-show="movies && searched">
@@ -15,11 +27,20 @@
         <span ng-pluralize count="movies.length" when="{'0': 'movies.', 'one': 'movie.', 'other': 'movies.'}"></span>
     </h3>
 
-    <ul>
-        <li ng-repeat="movie in movies">
-            <a ng-href="http://imdb.com/title/{{movie.imdbID}}">{{movie.Title}}</a> ({{movie.Year}})
-        </li>
-    </ul>
+    <table class="table table-condensed table-hover table-responsive">
+        <tbody>
+            <tr class="tr-no-border">
+                <th>Title</th>
+                <th>Release</th>
+            </tr>
+            <tr ng-repeat="movie in movies">
+                <td>
+                    <a ng-href="http://imdb.com/title/{{movie.imdbID}}">{{movie.Title}}</a>
+                </td>
+                <td>{{movie.Year}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <div ng-show="!movies && searched">
