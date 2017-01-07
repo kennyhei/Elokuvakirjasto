@@ -1,3 +1,7 @@
 .tr-no-border th {
     border-top-style: none !important;
 }
+
+.btn-fixed-width {
+    width: 80px;
+}

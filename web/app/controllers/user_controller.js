@@ -1,5 +1,9 @@
 MovieApp.controller('UserController', function($rootScope, $scope, $location, AuthenticationService) {
 
+    // Let's assume that user has already registered
+    // and show login form by default
+    $scope.registered = true;
+
     $scope.login = function () {
 
         AuthenticationService.login($scope.email, $scope.password)
