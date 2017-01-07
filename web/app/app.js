@@ -88,4 +88,8 @@ MovieApp.run(function (AuthenticationService, $location, $rootScope) {
     $rootScope.userLoggedIn = function () {
         return AuthenticationService.getUserLoggedIn();
     };
+
+    $rootScope.isActive = function (route) {
+        return route === $location.path();
+    }
 });
