@@ -6,10 +6,12 @@ MovieApp.config(function ($httpProvider) {
 
 MovieApp.config(function ($routeProvider) {
 
+    var baseRoot = 'app/js/views/';
+
     $routeProvider
     .when('/', {
         controller: 'ListMoviesController',
-        templateUrl: 'app/views/list_movies.html',
+        templateUrl: baseRoot + 'list_movies.html',
         resolve: {
             currentAuth: function(AuthenticationService) {
                 return AuthenticationService.isLoggedIn();
@@ -18,7 +20,7 @@ MovieApp.config(function ($routeProvider) {
     })
     .when('/login', {
         controller: 'UserController',
-        templateUrl: 'app/views/login.html',
+        templateUrl: baseRoot + 'login.html',
         resolve: {
             currentAuth: function(AuthenticationService) {
                 return AuthenticationService.isLoggedIn();
@@ -27,7 +29,7 @@ MovieApp.config(function ($routeProvider) {
     })
     .when('/movies', {
         controller: 'ListMoviesController',
-        templateUrl: 'app/views/list_movies.html',
+        templateUrl: baseRoot + 'list_movies.html',
         resolve: {
             currentAuth: function(AuthenticationService) {
                 return AuthenticationService.isLoggedIn();
@@ -36,7 +38,7 @@ MovieApp.config(function ($routeProvider) {
     })
     .when('/movies/new', {
         controller: 'AddMovieController',
-        templateUrl: 'app/views/add_movie.html',
+        templateUrl: baseRoot + 'add_movie.html',
         resolve: {
             currentAuth: function(AuthenticationService) {
                 return AuthenticationService.isLoggedIn();
@@ -45,7 +47,7 @@ MovieApp.config(function ($routeProvider) {
     })
     .when('/movies/search', {
         controller: 'SearchMoviesController',
-        templateUrl: 'app/views/search_movies.html',
+        templateUrl: baseRoot + 'search_movies.html',
         resolve: {
             currentAuth: function(AuthenticationService) {
                 return AuthenticationService.isLoggedIn();
@@ -54,7 +56,7 @@ MovieApp.config(function ($routeProvider) {
     })
     .when('/movies/:key', {
         controller: 'ShowMovieController',
-        templateUrl: 'app/views/show_movie.html',
+        templateUrl: baseRoot + 'show_movie.html',
         resolve: {
             currentAuth: function(AuthenticationService) {
                 return AuthenticationService.isLoggedIn();
@@ -63,7 +65,7 @@ MovieApp.config(function ($routeProvider) {
     })
     .when('/movies/:key/edit', {
         controller: 'EditMovieController',
-        templateUrl: 'app/views/edit_movie.html',
+        templateUrl: baseRoot + 'edit_movie.html',
         resolve: {
             currentAuth: function(AuthenticationService) {
                 return AuthenticationService.isLoggedIn();

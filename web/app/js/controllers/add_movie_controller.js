@@ -6,7 +6,7 @@ MovieApp.controller('AddMovieController', function($scope, $location, currentAut
     }
 
     $scope.partial = {
-        url: 'app/views/partials/movie_form.html'
+        url: 'app/js/views/partials/movie_form.html'
     }
 
     $scope.addMovie = function () {

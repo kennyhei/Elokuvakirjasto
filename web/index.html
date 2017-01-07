@@ -50,7 +50,7 @@
 
     <div class="container-fluid" ng-view></div>
 
-    <!-- Hyödyllisiä kirjastoja -->
+    <!-- Dependencies -->
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
@@ -58,17 +58,7 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Linkitä omat tiedostosi tähän (huomaa, että polun juuri on web-kansio!) -->
-    <!-- TODO: Concat & minify -->
-    <script src="app/app.js"></script>
-    <script src="app/controllers/list_movies_controller.js"></script>
-    <script src="app/controllers/add_movie_controller.js"></script>
-    <script src="app/controllers/show_movie_controller.js"></script>
-    <script src="app/controllers/edit_movie_controller.js"></script>
-    <script src="app/controllers/search_movies_controller.js"></script>
-    <script src="app/controllers/user_controller.js"></script>
-    <script src="app/services/firebase_service.js"></script>
-    <script src="app/services/omdb_service.js"></script>
-    <script src="app/services/auth_service.js"></script>
+    <!-- Code -->
+    <script src="app/app.min.js"></script>
   </body>
 </html>

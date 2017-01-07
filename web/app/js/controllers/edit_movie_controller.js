@@ -10,7 +10,7 @@ MovieApp.controller('EditMovieController', function($scope,
     }
 
     $scope.partial = {
-        url: 'app/views/partials/movie_form.html'
+        url: 'app/js/views/partials/movie_form.html'
     }
 
     var key = $routeParams.key;
