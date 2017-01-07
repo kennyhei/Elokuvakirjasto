@@ -9,6 +9,7 @@ MovieApp.controller('UserController', function($rootScope, $scope, $location, Au
         AuthenticationService.login($scope.email, $scope.password)
         .then(function () {
             $location.path('/movies');
+            $scope.registered = true;
         })
         .catch(function () {
             $scope.message = 'Wrong email or password!';
